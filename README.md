@@ -5,6 +5,10 @@
 - @kangactor123(Owner)
 - @hwpphwpp(Owner)
 
+## Branch
+
+- Thomar (@kangactor123)
+
 ## Dev Period
 
 - 3/4(Friday) ~
@@ -53,3 +57,9 @@ npm i framer-motion
 ```
 npm run dev
 ```
+
+## Issue
+
+- 깃허브 인터넷 상에서 직접 수정 X (README 등 .. 파일)
+- 브랜치 작업 후 수정 사항 바로 commit
+- 추가된 라이브러리는 README에 기록
