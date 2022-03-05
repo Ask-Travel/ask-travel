@@ -124,11 +124,22 @@ const BlogTitle = styled.h1`
 const BlogSlide = styled.div`
   width: 100%;
   height: 70%;
-  padding: 0 15%;
+  padding: 0 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
+`;
+
+const SlideCard = styled.div`
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 `;
 
 /* SearchSection Animation 효과 넣어야함 */
@@ -175,8 +186,14 @@ const Home: NextPage = () => {
 
       <BlogSection>
         <BlogTitle>다른 회원의 여행 일정을 구경해보세요</BlogTitle>
+        <BlogSlide>
+          <ArrowBackIcon fontSize="large" />
+          <SlideCard></SlideCard>
+          <SlideCard></SlideCard>
+          <SlideCard></SlideCard>
+          <ArrowForwardIcon fontSize="large" />
+        </BlogSlide>
       </BlogSection>
-      <BlogSlide></BlogSlide>
     </Wrapper>
   );
 };

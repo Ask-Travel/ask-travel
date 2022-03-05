@@ -1,8 +1,9 @@
-# ASK-TRAVEl
+# ASK-TRAVEL
 
 ## Contributor
 
 - @kangactor123(Owner)
+- @hwpphwpp(Owner)
 
 ## Dev Period
 
@@ -12,6 +13,7 @@
 
 - OS : MAC
 - Language : Typescript
+- Framework : NEXT.js
 - CNA (Create Next App)
 
 ```
