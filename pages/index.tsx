@@ -188,7 +188,7 @@ const Home: NextPage = () => {
         <BlogTitle>다른 회원의 여행 일정을 구경해보세요</BlogTitle>
         <BlogSlide>
           <ArrowBackIcon fontSize="large" />
-          <SlideCard></SlideCard>
+          <SlideCard>hi</SlideCard>
           <SlideCard></SlideCard>
           <SlideCard></SlideCard>
           <ArrowForwardIcon fontSize="large" />
