@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CssBaseline />
       <GlobalStyle />
       <Layout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   );

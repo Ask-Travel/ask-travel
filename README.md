@@ -40,6 +40,12 @@ npm i -D babel-plugin-styled-components
 npm i recoil
 ```
 
+- Framer-motion
+
+```
+npm i framer-motion
+```
+
 ## Script
 
 ```

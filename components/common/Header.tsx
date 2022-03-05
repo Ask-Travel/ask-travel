@@ -10,15 +10,15 @@ const Wrapper = styled.header`
   padding: 30px;
   justify-content: space-between;
   align-items: center;
-  background-color: #e6e3e3;
+  background-color: #ffffff;
   position: fixed;
   top: 0;
   z-index: 1;
 `;
 
-const Logo = styled.span`
-  font-size: 30px;
-  color: green;
+const LogoImg = styled.img`
+  width: 180px;
+  height: 50px;
   margin-left: 3%;
 `;
 
@@ -46,7 +46,7 @@ const UserBedge = styled.span`
 function Header() {
   return (
     <Wrapper>
-      <Logo>여행을 묻다</Logo>
+      <LogoImg src="resources/image/logo.png" alt="여행을묻다_로고" />
       <UserInterface>
         <span>누구님, 여행을 즐겨보세요.</span>
         <NotificationsActiveIcon color="secondary" />
