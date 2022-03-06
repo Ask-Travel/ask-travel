@@ -2,15 +2,21 @@ import styled from "styled-components";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
+import {
+  AnimatePresence,
+  motion,
+  useAnimation,
+  useViewportScroll,
+} from "framer-motion";
+import { useEffect } from "react";
 
-const Wrapper = styled.header`
+const Wrapper = styled(motion.header)`
   display: flex;
   width: 100vw;
   height: 80px;
   padding: 30px;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -43,19 +49,41 @@ const UserBedge = styled.span`
   }
 `;
 
+const navVariants = {
+  top: {
+    backgroundColor: "rgba(255,255,255,0)",
+  },
+  scroll: {
+    backgroundColor: "rgba(255,255,255,1)",
+  },
+};
+
 function Header() {
+  const { scrollY } = useViewportScroll();
+  const navAnimation = useAnimation();
+  useEffect(() => {
+    scrollY.onChange(() => {
+      if (scrollY.get() > 20) {
+        navAnimation.start("scroll");
+      } else {
+        navAnimation.start("top");
+      }
+    });
+  }, [scrollY]);
   return (
-    <Wrapper>
-      <LogoImg src="resources/image/logo.png" alt="여행을묻다_로고" />
-      <UserInterface>
-        <span>누구님, 여행을 즐겨보세요.</span>
-        <NotificationsActiveIcon color="secondary" />
-        <UserBedge>
-          <MenuIcon />
-          <PersonIcon />
-        </UserBedge>
-      </UserInterface>
-    </Wrapper>
+    <AnimatePresence>
+      <Wrapper variants={navVariants} animate={navAnimation} initial="top">
+        <LogoImg src="resources/image/logo.png" alt="여행을묻다_로고" />
+        <UserInterface>
+          <span>누구님, 여행을 즐겨보세요.</span>
+          <NotificationsActiveIcon color="secondary" />
+          <UserBedge>
+            <MenuIcon />
+            <PersonIcon />
+          </UserBedge>
+        </UserInterface>
+      </Wrapper>
+    </AnimatePresence>
   );
 }
 

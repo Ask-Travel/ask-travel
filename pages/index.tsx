@@ -5,26 +5,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+/* 반응형 미디어쿼리 */
 const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
-  padding-top: 60px;
+  height: fit-content;
 `;
 
 const SearchSection = styled.section<{ url: string }>`
   width: 100vw;
-  height: 80vh;
+  height: 90vh;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
-  font-size: 25px;
+  justify-content: center;
+  font-size: 30px;
   font-weight: 600;
-  padding: 120px 0;
   background: url(${(props) => props.url});
   background-size: cover;
   background-repeat: no-repeat;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 
 const SearchForm = styled.form`
@@ -55,8 +58,8 @@ const ScheduleSection = styled.section`
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  padding: 7% 15%;
-  gap: 20px;
+  padding: 2% 15%;
+  gap: 40px;
 `;
 
 const SecheduleTitle = styled.h1`
@@ -142,6 +145,77 @@ const SlideCard = styled.div`
   border-radius: 10px;
 `;
 
+const CardImgDiv = styled.div`
+  width: 100%;
+  height: 55%;
+  padding: 2px;
+  background-color: gray;
+`;
+
+const CardInfoDiv = styled.div`
+  width: 100%;
+  height: 45%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  div:first-child {
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+    justify-content: center;
+    gap: 5px;
+    letter-spacing: 1px;
+    span:nth-child(1) {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 30px;
+    }
+    span:nth-child(2) {
+      font-size: 16px;
+    }
+  }
+  div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    span:nth-child(1) {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30px;
+    }
+    span:nth-child(2) {
+      font-size: 16px;
+    }
+  }
+  div:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+`;
+
+const SlideButtonDiv = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 8%;
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+`;
+
 /* SearchSection Animation 효과 넣어야함 */
 const Home: NextPage = () => {
   const [keyword, setKeyword] = useState("");
@@ -188,11 +262,34 @@ const Home: NextPage = () => {
         <BlogTitle>다른 회원의 여행 일정을 구경해보세요</BlogTitle>
         <BlogSlide>
           <ArrowBackIcon fontSize="large" />
-          <SlideCard>hi</SlideCard>
+          <SlideCard>
+            <CardImgDiv></CardImgDiv>
+            <CardInfoDiv>
+              <div>
+                <span>ILNAM</span>
+                <span>오스트레일리아 (Australia)</span>
+                <span>2022-02-11 ~ 2022-02-13</span>
+              </div>
+              <div>
+                <span>테스트</span>
+                <span>테스트</span>
+              </div>
+              <div>
+                <span>123</span>
+                <button>버튼</button>
+              </div>
+            </CardInfoDiv>
+          </SlideCard>
           <SlideCard></SlideCard>
           <SlideCard></SlideCard>
           <ArrowForwardIcon fontSize="large" />
         </BlogSlide>
+        <SlideButtonDiv>
+          <span>
+            전체보기
+            <ArrowForwardIcon />
+          </span>
+        </SlideButtonDiv>
       </BlogSection>
     </Wrapper>
   );
