@@ -20,14 +20,11 @@ const SearchSection = styled.section<{ url: string }>`
   gap: 40px;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: 600;
   background: url(${(props) => props.url});
   background-size: cover;
   background-repeat: no-repeat;
-  @media screen and (max-width: 500px) {
-    font-size: 20px;
-  }
 `;
 
 const SearchForm = styled.form`
