@@ -1,4 +1,3 @@
-test
 # ASK-TRAVEL FE
 
 ## Contributor
@@ -9,6 +8,7 @@ test
 ## Branch
 
 - Thomar (@kangactor123)
+- hw (@hwpphwpp)
 
 ## Dev Period
 
@@ -64,3 +64,12 @@ npm run dev
 - 깃허브 인터넷 상에서 직접 수정 X (README 등 .. 파일)
 - 브랜치 작업 후 수정 사항 바로 commit
 - 추가된 라이브러리는 README에 기록
+
+## Part
+
+- Index
+- Search Page
+- Blog
+- Schedule Traveling
+- Chat
+- Login/Join, MyPage

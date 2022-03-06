@@ -66,4 +66,10 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color:inherit;
     }
+    html {
+    font-size: 12px;
+    @media screen and (max-width: 600px) {
+      font-size: 8px;
+    }
+    }
 `;
