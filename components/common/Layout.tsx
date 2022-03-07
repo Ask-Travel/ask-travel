@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Header from "./Header";
 
 interface AppLayoutProps {
@@ -9,6 +10,7 @@ export default function Layout({ children }: AppLayoutProps) {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 }
