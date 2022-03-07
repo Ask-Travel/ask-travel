@@ -9,6 +9,7 @@ import {
   useViewportScroll,
 } from "framer-motion";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const Wrapper = styled(motion.header)`
   display: flex;
@@ -26,6 +27,7 @@ const LogoImg = styled.img`
   width: 180px;
   height: 50px;
   margin-left: 3%;
+  cursor: pointer;
 `;
 
 const UserInterface = styled.div`
@@ -61,6 +63,7 @@ const navVariants = {
 function Header() {
   const { scrollY } = useViewportScroll();
   const navAnimation = useAnimation();
+  const router = useRouter();
   useEffect(() => {
     scrollY.onChange(() => {
       if (scrollY.get() > 20) {
@@ -70,10 +73,17 @@ function Header() {
       }
     });
   }, [scrollY]);
+  const goHome = () => {
+    router.push("/");
+  };
   return (
     <AnimatePresence>
       <Wrapper variants={navVariants} animate={navAnimation} initial="top">
-        <LogoImg src="resources/image/logo.png" alt="여행을묻다_로고" />
+        <LogoImg
+          src="resources/image/logo.png"
+          alt="여행을묻다_로고"
+          onClick={goHome}
+        />
         <UserInterface>
           <span>누구님, 여행을 즐겨보세요.</span>
           <NotificationsActiveIcon color="secondary" />

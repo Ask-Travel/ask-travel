@@ -33,7 +33,6 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
     line-height: 1;
-    height:200vh;
     }
     menu, ol, ul {
     list-style: none;
