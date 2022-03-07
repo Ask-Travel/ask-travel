@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useRouter } from "next/router";
 
 /* 반응형 미디어쿼리 */
 const Wrapper = styled.div`
@@ -216,16 +217,25 @@ const SlideButtonDiv = styled.div`
 /* SearchSection Animation 효과 넣어야함 */
 const Home: NextPage = () => {
   const [keyword, setKeyword] = useState("");
+  const router = useRouter();
   const searchRef = useRef<HTMLInputElement>(null);
   const inputKeyword = (event: React.FormEvent<HTMLInputElement>) => {
     /* 엔터 입력 시 화면 전환 (검색 페이지로) */
     setKeyword(event.currentTarget.value);
   };
+  const testSearch = () => {
+    router.push("/search");
+  };
+  const keywordSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("searching");
+    router.push("/search");
+  };
   return (
     <Wrapper>
       <SearchSection url={`/resources/image/back1.png`}>
         어디든 상관없이 떠나고 싶을 때 여행을 묻다가 도와드립니다
-        <SearchForm>
+        <SearchForm onSubmit={keywordSubmit}>
           <SearchBar
             ref={searchRef}
             placeholder="키워드를 입력해보세요."
@@ -235,6 +245,7 @@ const Home: NextPage = () => {
           <SearchIcon
             style={{ position: "absolute", right: 10 }}
             color="disabled"
+            onClick={testSearch}
           />
         </SearchForm>
       </SearchSection>
