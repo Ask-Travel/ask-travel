@@ -56,10 +56,9 @@ export const GlobalStyle = createGlobalStyle`
     body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    line-height: 1.2;
-    color: ${(props) => props.theme.black.darker};
-    background-color: ${(props) => props.theme.white.lighter};
-    user-select: none;
+    max-width:1440px;
+    color: black;
+    background-color: white;
     overflow-x: hidden;
     }
     a {
