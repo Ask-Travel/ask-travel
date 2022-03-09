@@ -8,8 +8,9 @@ import {
   useAnimation,
   useViewportScroll,
 } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Wrapper = styled(motion.header)`
   display: flex;
@@ -28,6 +29,10 @@ const LogoImg = styled.img`
   height: 50px;
   margin-left: 3%;
   cursor: pointer;
+  @media screen and (max-width: 600px) {
+    width: 90px;
+    height: 25px;
+  }
 `;
 
 const UserInterface = styled.div`
@@ -37,6 +42,18 @@ const UserInterface = styled.div`
   justify-content: center;
   margin-right: 3%;
   gap: 15px;
+`;
+
+const NoLoginInterface = styled.div`
+  display: flex;
+  width: 12%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 3%;
+  @media screen and (max-width: 600px) {
+    width: 30%;
+  }
 `;
 
 const UserBedge = styled.span`
@@ -51,6 +68,14 @@ const UserBedge = styled.span`
   }
 `;
 
+const MemberButton = styled.span`
+  width: fit-content;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 2%;
+  cursor: pointer;
+`;
+
 const navVariants = {
   top: {
     backgroundColor: "rgba(255,255,255,0)",
@@ -63,6 +88,7 @@ const navVariants = {
 function Header() {
   const { scrollY } = useViewportScroll();
   const navAnimation = useAnimation();
+  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
   useEffect(() => {
     scrollY.onChange(() => {
@@ -84,14 +110,23 @@ function Header() {
           alt="여행을묻다_로고"
           onClick={goHome}
         />
-        <UserInterface>
-          <span>누구님, 여행을 즐겨보세요.</span>
-          <NotificationsActiveIcon color="secondary" />
-          <UserBedge>
-            <MenuIcon />
-            <PersonIcon />
-          </UserBedge>
-        </UserInterface>
+        {isLogin ? (
+          <UserInterface>
+            <span>누구님, 여행을 즐겨보세요.</span>
+            <NotificationsActiveIcon color="secondary" />
+            <UserBedge>
+              <MenuIcon />
+              <PersonIcon />
+            </UserBedge>
+          </UserInterface>
+        ) : (
+          <NoLoginInterface>
+            <Link href="/login">
+              <MemberButton>로그인</MemberButton>
+            </Link>
+            <MemberButton>회원가입</MemberButton>
+          </NoLoginInterface>
+        )}
       </Wrapper>
     </AnimatePresence>
   );

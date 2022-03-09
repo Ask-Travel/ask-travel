@@ -1,8 +1,4 @@
-import {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import { GetServerSideProps } from "next";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
