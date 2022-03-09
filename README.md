@@ -5,11 +5,6 @@
 - @kangactor123(Owner)
 - @hwpphwpp(Owner)
 
-## Branch
-
-- Thomar (@kangactor123)
-- hw (@hwpphwpp)
-
 ## Dev Period
 
 - 3/4(Friday) ~
@@ -51,6 +46,12 @@ npm i recoil
 
 ```
 npm i framer-motion
+```
+
+- React-hook-form
+
+```
+npm i react-hook-form
 ```
 
 ## Script
