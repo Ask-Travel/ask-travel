@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const LoginForm = styled.form`
+export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 5%;
@@ -22,12 +22,12 @@ const LoginForm = styled.form`
   background-color: white;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   font-size: 2.4rem;
   font-weight: 800;
 `;
 
-const InputDiv = styled.div`
+export const InputDiv = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -44,15 +44,18 @@ const InputDiv = styled.div`
   }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   width: 100%;
   height: 40px;
   padding: 8px 12px;
   background-color: #fbfbfd;
   border: 1px solid #d7e2eb;
+  &:focus {
+    outline: none;
+  }
 `;
 
-const LoginButton = styled.button`
+export const SubmitBtn = styled.button`
   display: block;
   height: 40px;
   font-size: 1.4rem;
@@ -99,7 +102,7 @@ const LoginPage: NextPage = () => {
           <Input type="text" placeholder="아이디" />
         </InputDiv>
         <InputDiv>
-          <LoginButton>로그인 하기</LoginButton>
+          <SubmitBtn>로그인 하기</SubmitBtn>
         </InputDiv>
         <JoinDiv>
           아직 계정이 없으신가요?
