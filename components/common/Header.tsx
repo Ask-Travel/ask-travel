@@ -124,7 +124,9 @@ function Header() {
             <Link href="/login">
               <MemberButton>로그인</MemberButton>
             </Link>
-            <MemberButton>회원가입</MemberButton>
+            <Link href="/signup">
+              <MemberButton>회원가입</MemberButton>
+            </Link>
           </NoLoginInterface>
         )}
       </Wrapper>
