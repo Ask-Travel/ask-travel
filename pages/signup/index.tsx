@@ -1,34 +1,8 @@
-import { Pattern } from "@mui/icons-material";
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { Input, InputDiv, LoginForm, SubmitBtn, Title } from "../login";
-
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 90vh;
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
-`;
-
-const JoinForm = styled(LoginForm)`
-  height: 600px;
-  gap: 3%;
-`;
-
-const Error = styled.span`
-  font-size: 1.2rem;
-  color: red;
-`;
-
-interface IJoinData {
-  id: string;
-  pwd: string;
-  checkPwd: string;
-  name: string;
-  email: string;
-}
+import { ISignUp } from "../../interface";
+import { Input, InputDiv, SubmitBtn, Title } from "../login/login.style";
+import { Error, JoinForm, Wrapper } from "./signUp.style";
 
 const SignUp: NextPage = () => {
   const {
@@ -36,8 +10,8 @@ const SignUp: NextPage = () => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<IJoinData>();
-  const onValid = (data: IJoinData) => {
+  } = useForm<ISignUp>();
+  const onValid = (data: ISignUp) => {
     if (data.pwd !== data.checkPwd) {
       setError(
         "checkPwd",
@@ -126,8 +100,21 @@ const SignUp: NextPage = () => {
           />
         </InputDiv>
         <InputDiv>
-          <div>이메일</div>
-          <Input type="email" placeholder="이메일을 입력해주세요." />
+          <div>
+            이메일
+            {errors.email && <Error>{errors.email.message}</Error>}
+          </div>
+          <Input
+            placeholder="이메일을 입력해주세요."
+            {...register("email", {
+              required: "이메일을 입력해주세요.",
+              pattern: {
+                value:
+                  /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i,
+                message: "이메일을 형식에 맞게 입력해주세요.",
+              },
+            })}
+          />
         </InputDiv>
         <InputDiv>
           <SubmitBtn>회원가입</SubmitBtn>
