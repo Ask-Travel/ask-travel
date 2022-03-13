@@ -1,105 +1,44 @@
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  margin-top: 70px;
-  width: 100vw;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 5%;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 500px;
-  background-color: white;
-`;
-
-export const Title = styled.h1`
-  font-size: 2.4rem;
-  font-weight: 800;
-`;
-
-export const InputDiv = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  div {
-    margin-left: 5px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    span {
-      color: #0078ff;
-    }
-  }
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  height: 40px;
-  padding: 8px 12px;
-  background-color: #fbfbfd;
-  border: 1px solid #d7e2eb;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const SubmitBtn = styled.button`
-  display: block;
-  height: 40px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  background-color: #0078ff;
-  color: white;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  &:hover {
-    background-color: blue;
-  }
-`;
-
-const JoinDiv = styled.div`
-  text-align: center;
-  height: 40px;
-  font-size: 1.2rem;
-  color: #98a8b9;
-  span {
-    margin-left: 10px;
-    color: black;
-    font-weight: 600;
-    &:hover {
-      color: #0078ff;
-    }
-  }
-`;
+import { ILoginForm } from "../../interface";
+import {
+  Input,
+  InputDiv,
+  JoinDiv,
+  LoginForm,
+  SubmitBtn,
+  Title,
+  Wrapper,
+} from "./login.style";
 
 const LoginPage: NextPage = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<ILoginForm>();
+  const onValid = (data: ILoginForm) => {
+    console.log(data);
+  };
   return (
     <Wrapper>
-      <LoginForm>
+      <LoginForm onSubmit={handleSubmit(onValid)}>
         <Title>로그인</Title>
         <InputDiv>
-          <div>이메일</div>
-          <Input type="text" placeholder="아이디" />
+          <div>아이디</div>
+          <Input
+            placeholder="아이디"
+            {...register("id", {
+              required: "ID를 입력해주세요.",
+            })}
+          />
         </InputDiv>
         <InputDiv>
           <div>
             비밀번호
             <span>비밀번호 재설정</span>
           </div>
-          <Input type="text" placeholder="아이디" />
+          <Input
+            type="password"
+            placeholder="비밀번호"
+            {...register("pwd", { required: "비밀번호를 입력해주세요." })}
+          />
         </InputDiv>
         <InputDiv>
           <SubmitBtn>로그인 하기</SubmitBtn>
